@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('partials/header') %>
+<div class="container">
+  <h1>Posts</h1>
+  <div class="card text-center">
+    <div class="card-header">
+      <%= messages.author_name %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= messages.title %></h5>
+      <p class="card-text"><%= messages.description %>></p>
+      <a href="#" class="btn btn-danger">Delete</a>
+    </div>
+    <div class="card-footer text-muted">
+      2 days ago
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>

@@ -1,4 +1,3 @@
-const { NotExtended } = require("http-errors");
 const Messages = require("../models/messages");
 
 exports.index = function(req,res){
