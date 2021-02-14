@@ -2,6 +2,7 @@ const cookieParser = require("cookie-parser");
 const createError = require("http-errors");
 const env = require("dotenv");
 const express = require("express");
+const flash = require('connect-flash');
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(flash());
 
   // -------------- SESSION SETUP ---------------- //
 const sessionStore = new MongoStore({ mongooseConnection: db, collection: 'sessions' });
