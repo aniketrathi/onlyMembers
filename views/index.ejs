@@ -1,18 +1,33 @@
 <%- include('partials/header') %>
 <div class="container">
-  <h1>Posts</h1>
-  <div class="card text-center">
-    <div class="card-header">
-      <%= messages.author_name %>
-    </div>
+  <h2 class="text-center mt-4">Posts</h2>
+  <br />
+  <% if(messages && messages.length) { messages.map(message => { %>
+  <div class="card excss">
     <div class="card-body">
-      <h5 class="card-title"><%= messages.title %></h5>
-      <p class="card-text"><%= messages.description %>></p>
-      <a href="#" class="btn btn-danger">Delete</a>
-    </div>
-    <div class="card-footer text-muted">
-      2 days ago
+      <div class="card-title"><strong><%= message.title %></strong></div>
+      <p><%= message.description %></p>
+      <hr />
+      <% if(currentUser){ if(currentUser.role === 'member' || currentUser.role
+      === 'admin'){ %>
+      <p>
+        <strong>Author:</strong><i> <%= message.author.username %></i> &nbsp;
+        <strong>Posted on:</strong
+        ><i> <%= message.createdAt.toDateString() %></i>
+      </p>
+      <% } if(currentUser.role === 'admin') { %>
+      <form
+        class="form-inline"
+        action="/blogs/<%= blog._id %>/delete"
+        method="POST"
+      >
+        <button type="submit" class="btn btn-danger">Delete Blog</button>
+      </form>
+      <% } } %>
     </div>
   </div>
+  <% }) } else {%>
+  <h4 class="text-center">NO POSTS! Please add some</h4>
+  <% } %>
 </div>
 <%- include('partials/footer') %>

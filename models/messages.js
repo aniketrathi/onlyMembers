@@ -6,7 +6,7 @@ const MessageSchema = new Schema(
   {
     title: { type: String, required: true },
     description: { type: String, required: true },
-    author_name: { type: String, required: true },
+    author_name: { type: Schema.Types.ObjectId, ref: "Signup", required: true },
   },
   { timestamps: true }
 );
