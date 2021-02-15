@@ -4,14 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
     rel="stylesheet"
-    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
     crossorigin="anonymous"
   />
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
+  <h2 class="text-center mt-4">
+    <small class="form-text text-muted">
+      <% if(locals.message) %> <%= locals.message %>
+    </small>
+  </h2>
   <div class="container auth-container">
     <div class="row auth-board">
       <div class="col auth-form-col">
@@ -27,9 +32,6 @@
               placeholder="aniket"
               required
             />
-            <div class="invalid-feedback">
-              <%= locals.message %> === undefined ? '' : <%= locals.message %>
-            </div>
           </div>
           <div class="form-group">
             <label for="password">Password</label>

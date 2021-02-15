@@ -21,7 +21,6 @@ exports.signup_post = function (req, res) {
     User.findOne({ username: username }).exec(function (err, user) {
       if (err) return next(err);
       if (user) {
-        console.log("User ",user);
         const msg = "Oops! username exits";
         res.render("signup-form", {
           title: "Signup",
