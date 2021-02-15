@@ -2,14 +2,14 @@ const cookieParser = require("cookie-parser");
 const createError = require("http-errors");
 const env = require("dotenv");
 const express = require("express");
-const flash = require('connect-flash');
+const flash = require("connect-flash");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path");
-var passport = require('passport');
-const session = require('express-session');
+var passport = require("passport");
+const session = require("express-session");
 
-const MongoStore = require('connect-mongo')(session);
+const MongoStore = require("connect-mongo")(session);
 
 env.config();
 
@@ -34,25 +34,36 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(flash());
 
-  // -------------- SESSION SETUP ---------------- //
-const sessionStore = new MongoStore({ mongooseConnection: db, collection: 'sessions' });
+// -------------- SESSION SETUP ---------------- //
+const sessionStore = new MongoStore({
+  mongooseConnection: db,
+  collection: "sessions",
+});
 
-app.use(session({
+app.use(
+  session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     store: sessionStore,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24 // Equals 1 day (1 day * 24 hr/1 day * 60 min/1 hr * 60 sec/1 min * 1000 ms / 1 sec)
-    }
-}));
+      maxAge: 1000 * 60 * 60 * 24, // Equals 1 day (1 day * 24 hr/1 day * 60 min/1 hr * 60 sec/1 min * 1000 ms / 1 sec)
+    },
+  })
+);
 
- // -------------- PASSPORT AUTHENTICATION ---------------- //
+// -------------- PASSPORT AUTHENTICATION ---------------- //
 // Need to require the entire Passport config module so app.js knows about it //
-require('./config/passport');
+require("./config/passport");
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+/// access to the currentUser variable in all views ///
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
 
 app.use("/", indexRouter);
 app.use("/catalog", catalogRouter);

@@ -1,8 +1,6 @@
-
-  
-*{
+* {
   box-sizing: border-box;
-  font-family: 'Roboto Slab', serif;
+  font-family: "Roboto Slab", serif;
 }
 
 body {
@@ -13,10 +11,10 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
 
-.auth-container{
+.auth-container {
   border: 1px solid whitesmoke;
   border-radius: 20px;
   background-color: white;
@@ -34,23 +32,23 @@ a {
   padding-bottom: 10vh;
 }
 
-.auth-board{
+.auth-board {
   width: 100%;
 }
 
-.auth-img-col{
+.auth-img-col {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-@media(max-width: 768px){
-  .auth-img-col{
+@media (max-width: 768px) {
+  .auth-img-col {
     display: none;
   }
 }
 
-.text-heading{
+.text-heading {
   position: absolute;
   text-align: center;
   top: 10%;
@@ -58,7 +56,6 @@ a {
   transform: translateX(-50%);
 }
 
-.nav-item{
+.nav-item {
   padding-left: 10px;
 }
-
