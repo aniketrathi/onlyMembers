@@ -7,6 +7,7 @@ const messages_controller = require("../controllers/messages-controller");
 const signup_controller = require("../controllers/signup-controller");
 const login_controller = require("../controllers/login-controller");
 const logout_controller = require("../controllers/logout-controller");
+const member_controller = require("../controllers/member-controller");
 
 const signup_validator = require("../validators/signup-validator");
 const message_validator = require("../validators/messages-validator");
@@ -49,5 +50,10 @@ router.post(
 
 /// LOGOUT ///
 router.get("/logout", logout_controller.logout_get);
+
+/// MEMBER LOGIN ///
+router.get("/become_member", member_controller.create_get);
+
+router.post("/become_member", member_controller.create_post);
 
 module.exports = router;
