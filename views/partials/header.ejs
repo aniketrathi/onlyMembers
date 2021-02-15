@@ -24,9 +24,9 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/catalog"
+        <a class="navbar-brand title" href="/catalog"
           ><i class="fas fa-glass-cheers"></i><strong>Club House</strong></a
-        >
+          >
         <button
           class="navbar-toggler"
           type="button"
@@ -45,7 +45,7 @@
             </li>
             <% if(currentUser && currentUser.role === 'user') {%>
             <li class="nav-item">
-              <a class="nav-link" href="/catalog/create">Create Blog</a>
+              <a class="nav-link" href="/catalog/create">Create Post</a>
             </li>
             <% } %>
           </ul>

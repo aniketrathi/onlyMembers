@@ -56,6 +56,15 @@ a {
   transform: translateX(-50%);
 }
 
+.title{
+  font-size: 2.5vw;
+}
+
+.excss {
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
 .nav-item {
   padding-left: 10px;
 }

@@ -9,9 +9,20 @@ const login_controller = require("../controllers/login-controller");
 const logout_controller = require("../controllers/logout-controller");
 
 const signup_validator = require("../validators/signup-validator");
+const message_validator = require("../validators/messages-validator");
 
 /// Messages Route ///
 router.get("/", messages_controller.index);
+
+router.get("/create", messages_controller.create_get);
+
+router.post(
+  "/create",
+  message_validator.generateValidator,
+  messages_controller.create_post
+);
+
+router.post("/",messages_controller.delete_post);
 
 /// SIGNUP ROUTE ///
 
