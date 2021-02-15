@@ -6,6 +6,7 @@ const passport = require("passport");
 const messages_controller = require("../controllers/messages-controller");
 const signup_controller = require("../controllers/signup-controller");
 const login_controller = require("../controllers/login-controller");
+const logout_controller = require("../controllers/logout-controller");
 
 const signup_validator = require("../validators/signup-validator");
 
@@ -34,5 +35,8 @@ router.post(
   }),
   login_controller.login_post
 );
+
+/// LOGOUT ///
+router.get("/logout", logout_controller.logout_get);
 
 module.exports = router;
