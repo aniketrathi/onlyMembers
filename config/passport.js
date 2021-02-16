@@ -1,5 +1,5 @@
-const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
+const passport = require("passport");
 const User = require("../models/signup");
 const validatePassword = require("../lib/password-util").validatePassword;
 
