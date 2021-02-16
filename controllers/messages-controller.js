@@ -24,7 +24,7 @@ exports.create_post = function (req, res, next) {
   const { id } = req.user;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.render("create-form", {
+    res.render("message-form", {
       title: "Create Post",
       message: req.body,
       errors: errors.array(),
