@@ -6,7 +6,7 @@ const flash = require("connect-flash");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path");
-var passport = require("passport");
+const passport = require("passport");
 const session = require("express-session");
 
 const MongoStore = require("connect-mongo")(session);
@@ -59,7 +59,7 @@ require("./config/passport");
 app.use(passport.initialize());
 app.use(passport.session());
 
-/// access to the currentUser variable in all views ///
+/// access to the currentUser constiable in all views ///
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
   next();
