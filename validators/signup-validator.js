@@ -10,7 +10,8 @@ exports.generateValidator = [
     "Password must include one lowercase character, one uppercase character, a number, and a special character."
   ).matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i"),
   check("confirmPassword").custom((value, { req }) => {
-    if (value !== req.body.password) {
+    const { password } = req.body;
+    if (value !== password) {
       throw new Error("Password Confirmation does not match password");
     }
     return true;
