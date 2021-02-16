@@ -1,0 +1,33 @@
+<%- include('partials/header') %>
+<div class="container">
+  <h2 class="text-center mt-4">Posts</h2>
+  <br />
+  <% if(messages && messages.length) { messages.map(message => { %>
+  <div class="card excss">
+    <div class="card-body">
+      <div class="card-title"><strong><%= message.title %></strong></div>
+      <p><%= message.description %></p>
+      <hr />
+      <% if(currentUser){ if(currentUser.role === 'member' || currentUser.role
+      === 'admin'){ %>
+      <p>
+        <strong>Author:</strong><i> <%= message.author.username %></i> &nbsp;
+        <strong>Posted on:</strong
+        ><i> <%= message.createdAt.toDateString() %></i>
+      </p>
+      <% } if(currentUser.role === 'admin') { %>
+      <form
+        class="form-inline"
+        action="/catalog/<%= message.id %>/delete"
+        method="POST"
+      >
+        <button type="submit" class="btn btn-danger">Delete Blog</button>
+      </form>
+      <% } } %>
+    </div>
+  </div>
+  <% }) } else {%>
+  <h4 class="text-center">NO POSTS! Please add some</h4>
+  <% } %>
+</div>
+<%- include('partials/footer') %>
