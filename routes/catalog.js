@@ -8,6 +8,7 @@ const signup_controller = require("../controllers/signup-controller");
 const login_controller = require("../controllers/login-controller");
 const logout_controller = require("../controllers/logout-controller");
 const member_controller = require("../controllers/member-controller");
+const admin_controller = require("../controllers/admin-controller");
 
 const signup_validator = require("../validators/signup-validator");
 const message_validator = require("../validators/messages-validator");
@@ -23,7 +24,7 @@ router.post(
   messages_controller.create_post
 );
 
-router.post("/",messages_controller.delete_post);
+router.post("/:id/delete",messages_controller.delete_post);
 
 /// SIGNUP ROUTE ///
 
@@ -51,9 +52,14 @@ router.post(
 /// LOGOUT ///
 router.get("/logout", logout_controller.logout_get);
 
-/// MEMBER LOGIN ///
+/// BECOME A MEMBER  ///
 router.get("/become_member", member_controller.create_get);
 
 router.post("/become_member", member_controller.create_post);
+
+/// BECOME AN ADMIN ///
+router.get("/become_admin", admin_controller.create_get);
+
+router.post("/become_admin", admin_controller.create_post);
 
 module.exports = router;

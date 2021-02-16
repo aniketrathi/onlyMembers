@@ -61,12 +61,12 @@
         <img class="img-fluid" src="/images/signup-image.jpg" />
       </div>
     </div>
-    <% if(locals.errors){ %>
+  </div>
+  <% if(locals.errors){ %>
     <ul>
       <% errors.map(error => { %>
       <li><%= error.msg %></li>
       <% }) %>
     </ul>
     <% } %>
-  </div>
 </body>

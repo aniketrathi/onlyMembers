@@ -18,7 +18,7 @@
       <% } if(currentUser.role === 'admin') { %>
       <form
         class="form-inline"
-        action="/blogs/<%= blog._id %>/delete"
+        action="/catalog/<%= message.id %>/delete"
         method="POST"
       >
         <button type="submit" class="btn btn-danger">Delete Blog</button>

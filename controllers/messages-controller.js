@@ -42,11 +42,10 @@ exports.create_post = function (req, res, next) {
   });
 };
 
-exports.delete_post = function(req,res) {
-  const {id} = req.params;
-  Messages.findByIdAndRemove(id , function(err){
-    if(err)
-    return next(err);
+exports.delete_post = function (req, res) {
+  const { id } = req.params;
+  Messages.findByIdAndDelete(id, function (err) {
+    if (err) return next(err);
     res.redirect("/catalog");
-  })
-}
+  });
+};
