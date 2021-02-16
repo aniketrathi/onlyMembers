@@ -1,6 +1,7 @@
-const User = require("../models/signup");
 const { validationResult } = require("express-validator");
+
 const generatePassword = require("../lib/password-util").generatePassword;
+const User = require("../models/signup");
 
 exports.signup_get = function (req, res) {
   res.render("signup-form", {

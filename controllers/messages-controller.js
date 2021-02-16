@@ -1,4 +1,5 @@
 const { validationResult } = require("express-validator");
+
 const Messages = require("../models/messages");
 
 exports.index = function (req, res) {

@@ -6,15 +6,18 @@ const flash = require("connect-flash");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path");
-const passport = require("passport");
 const session = require("express-session");
+const passport = require("passport");
 
 const MongoStore = require("connect-mongo")(session);
 
-env.config();
+// Need to require the entire Passport config module so js knows about it //
+require("./config/passport");
 
 const indexRouter = require("./routes/index");
 const catalogRouter = require("./routes/catalog");
+
+env.config();
 
 const app = express();
 
@@ -52,10 +55,7 @@ app.use(
   })
 );
 
-// -------------- PASSPORT AUTHENTICATION ---------------- //
-// Need to require the entire Passport config module so app.js knows about it //
-require("./config/passport");
-
+// -------------- PASSPORT AUTHENTICATION -------app.--------- //
 app.use(passport.initialize());
 app.use(passport.session());
 

@@ -1,20 +1,20 @@
 const express = require("express");
-const router = express.Router();
-
 const passport = require("passport");
 
-const messages_controller = require("../controllers/messages-controller");
-const signup_controller = require("../controllers/signup-controller");
+const admin_controller = require("../controllers/admin-controller");
 const login_controller = require("../controllers/login-controller");
 const logout_controller = require("../controllers/logout-controller");
 const member_controller = require("../controllers/member-controller");
-const admin_controller = require("../controllers/admin-controller");
+const messages_controller = require("../controllers/messages-controller");
+const signup_controller = require("../controllers/signup-controller");
 
-const signup_validator = require("../validators/signup-validator");
 const message_validator = require("../validators/messages-validator");
+const signup_validator = require("../validators/signup-validator");
 
-const login_middleware = require("../middleware/login-middleware");
 const admin_middleware = require("../middleware/admin-middleware");
+const login_middleware = require("../middleware/login-middleware");
+
+const router = express.Router();
 
 /// Messages Route ///
 router.get("/", messages_controller.index);

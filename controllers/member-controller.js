@@ -1,5 +1,7 @@
-const User = require("../models/signup");
 const env = require("dotenv");
+
+const User = require("../models/signup");
+
 env.config();
 
 exports.create_get = function (req, res) {
@@ -17,7 +19,6 @@ exports.create_post = function (req, res, next) {
       error: error,
     });
   } else {
-      console.log(id);
     User.findByIdAndUpdate(id, { role: "member" }).catch((err) => next(err));
     res.redirect("/catalog");
   }
