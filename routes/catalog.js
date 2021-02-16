@@ -13,10 +13,12 @@ const admin_controller = require("../controllers/admin-controller");
 const signup_validator = require("../validators/signup-validator");
 const message_validator = require("../validators/messages-validator");
 
+const login_middleware = require("../middleware/login-middleware");
+
 /// Messages Route ///
 router.get("/", messages_controller.index);
 
-router.get("/create", messages_controller.create_get);
+router.get("/create",login_middleware.verify_user, messages_controller.create_get);
 
 router.post(
   "/create",
@@ -54,13 +56,13 @@ router.post(
 router.get("/logout", logout_controller.logout_get);
 
 /// BECOME A MEMBER  ///
-router.get("/become_member", member_controller.create_get);
+router.get("/become_member",login_middleware.verify_user, member_controller.create_get);
 
-router.post("/become_member", member_controller.create_post);
+router.post("/become_member",login_middleware.verify_user, member_controller.create_post);
 
 /// BECOME AN ADMIN ///
-router.get("/become_admin", admin_controller.create_get);
+router.get("/become_admin",login_middleware.verify_user, admin_controller.create_get);
 
-router.post("/become_admin", admin_controller.create_post);
+router.post("/become_admin",login_middleware.verify_user, admin_controller.create_post);
 
 module.exports = router;
