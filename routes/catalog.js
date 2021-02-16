@@ -37,13 +37,14 @@ router.post(
 );
 
 /// LOGIN ROUTE ///
+router.get("/wrong_credentials",login_controller.wrong_credentials)
 
 router.get("/login", login_controller.login_get);
 
 router.post(
   "/login",
   passport.authenticate("local", {
-    failureRedirect: "/catalog/login",
+    failureRedirect: "/catalog/wrong_credentials",
     successRedirect: "/",
   }),
   login_controller.login_post

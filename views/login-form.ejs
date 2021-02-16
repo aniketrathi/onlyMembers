@@ -12,6 +12,11 @@
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 <body>
+  <h2 class="text-center mt-4">
+    <small class="form-text text-muted">
+      <% if(locals.message) %> <%= locals.message %>
+    </small>
+  </h2>
   <div class="container auth-container">
     <div class="row auth-board">
       <div class="col auth-form-col">
